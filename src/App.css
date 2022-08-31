@@ -54,3 +54,8 @@ code {
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.leaflet-container {
+  width: 100vw;
+  height: 100vh;
+}
