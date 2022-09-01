@@ -1,3 +1,4 @@
+import Map from "../components/map/Map";
 import logo from "../assets/logo.svg";
 import Counter from "../components/Counter";
 import EvenementSelected from "../components/EvenementSelected";
