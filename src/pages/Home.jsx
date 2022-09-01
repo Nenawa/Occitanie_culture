@@ -1,5 +1,6 @@
 import logo from "../assets/logo.svg";
 import Counter from "../components/Counter";
+import EvenementSelected from "../components/EvenementSelected";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <p>Hello Vite + React !</p>
 
       <Counter />
-
+      <EvenementSelected />
       <p>
         Edit <code>App.jsx</code> and save to test HMR updates.
       </p>
