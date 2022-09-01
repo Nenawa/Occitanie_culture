@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Search_bar.css'
 
-function Search_bar() {
+function SearchBar() {
     const divMoreFilterRef = useRef(null)
     const searchRef = useRef(null)
     const communeRef = useRef(null)
