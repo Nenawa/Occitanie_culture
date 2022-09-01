@@ -57,11 +57,7 @@ function EvenementSelected() {
             <div className="left">
                 <h1>{object.fields.titre}</h1>
                 <div className="text">
-                    <p className="colorText">
-                        Cumque pertinacius ut legum gnarus accusatorem flagitaret atque
-                        sollemnia, doctus id Caesar libertatemque superbiam ratus tamquam
-                        obtrectatorem audacem excarnificari
-                    </p>
+                    <p className="colorText">{object.fields.description}</p>
                 </div>
             </div>
             <div className="right">
