@@ -1,6 +1,6 @@
 import logo from "../assets/logo.svg";
 import Counter from "../components/Counter";
-import Search_bar from "../components/Search_bar";
+import Search_bar from "../components/Search_bar/Search_bar";
 
 export default function Home() {
   return (
