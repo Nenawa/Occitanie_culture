@@ -55,3 +55,36 @@ code {
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.rect{
+  background-color: #3C7A89;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.text{
+  width: 60%;
+  background-color: white;
+  margin-left: 20%;
+  border-radius: 10px;
+}
+
+.colorText{
+  color: #373F51;
+}
+
+.left{
+  display: column;
+  justify-content: left;
+  align-items: center;
+}
+
+.right{
+  display: column;
+  justify-content: right;
+  align-items: center;
+  width: 40%
+}
+
