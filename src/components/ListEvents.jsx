@@ -10,14 +10,15 @@ export default function ListEvents() {
   const [items, setItems] = useState(null);
 
   useEffect(() => {
+    
+
     fetch(URL)
-      .then(res => res.json())
-      
+      .then(res => res.json())     
       .then(
         (result) => {
-          console.log(result.records[0]);
+          console.log(result.records);
           setIsLoaded(true);
-          setItems(result.items);
+          setItems(result.records);
         },
         
         (err) => {
@@ -35,8 +36,11 @@ export default function ListEvents() {
     return (
       <ul>
         {items?.map(item => (
-          <li key={item.records.fields.titre}>
-            {item.titre} {item.commune}
+          <li key={item.fields}>
+            <p>{item.fields.titre}</p>
+            <p>{item.fields.description} </p>
+            <p>{item.fields.commune}</p>
+            <p>{item.fields.date}</p>
           </li>
         ))}
       </ul>
