@@ -5,9 +5,9 @@ import {
     Marker,
     Popup
 } from 'react-leaflet';
-import { useMap, useMapEvents } from 'react-leaflet/hooks';
 
 import 'leaflet/dist/leaflet.css';
+import './map.css';
 
 const Map = () => {
 
