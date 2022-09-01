@@ -51,7 +51,7 @@ function EvenementSelected() {
     if (res) setState(res)
     })
     .then((res) => console.log(setState));
-    }); */
+    }, []); */
     return (
         <div className="rect">
             <div className="left">
