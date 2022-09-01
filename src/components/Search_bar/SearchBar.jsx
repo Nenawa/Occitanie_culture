@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './Search_bar.css'
+import './SearchBar.css'
 
 function SearchBar() {
     const divMoreFilterRef = useRef(null)
@@ -64,4 +64,4 @@ function SearchBar() {
     )
 }
 
-export default Search_bar
+export default SearchBar
