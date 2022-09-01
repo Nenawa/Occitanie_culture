@@ -5,6 +5,7 @@ import {
     Marker,
     Popup
 } from 'react-leaflet';
+import { useMap, useMapEvents } from 'react-leaflet/hooks';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -22,11 +23,12 @@ const Map = () => {
         <Marker position={position}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
-            <a onClick={fullSteam} id='full' href='https://fakeupdate.net/win10ue/'>click hear</a>
+            <a id='full' href='https://fakeupdate.net/win10ue/'>click hear</a>
           </Popup>
         </Marker>
       </MapContainer>
     </>
+
   )
 }
 
