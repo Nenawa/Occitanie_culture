@@ -11,10 +11,6 @@ function App() {
 <<<<<<< HEAD
 =======
 
-      <div className="listEvents">
-      <ListEvents />
-      </div>
-
       
 >>>>>>> 69dffab (ajout de css en cours)
     </div>
