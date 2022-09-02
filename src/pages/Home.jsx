@@ -1,10 +1,7 @@
-
-import Map from "../components/map/Map";
-
 export default function Home() {
   return (
-    <header className="App-header">
-
-    </header>
+    
+    <div></div>
+    
   );
 }

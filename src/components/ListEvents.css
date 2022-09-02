@@ -1,0 +1,21 @@
+.listEvents{
+    border: 1px solid red;
+
+    max-width: 56.25rem;
+    margin: auto;
+    background-color: #3C7A89;
+}
+.listEvents ul{
+    margin: 0;
+}
+.listEvents li{
+    background-color: white;
+    list-style: none;
+
+    max-width: 90%;
+    margin: auto;
+}
+.listEvents__entete{
+    display: flex;
+    
+}
