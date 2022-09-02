@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './style.css';
 
 function EvenementSelected() {
     const myID = "e79f5d5dbea59bdf4b322f93e5caa86d91ad1ba1";
@@ -51,7 +52,7 @@ function EvenementSelected() {
     if (res) setState(res)
     })
     .then((res) => console.log(setState));
-    }); */
+    }, []); */
     return (
         <div className="rect">
             <div className="left">
