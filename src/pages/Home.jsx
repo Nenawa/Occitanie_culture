@@ -1,7 +1,8 @@
 import Map from "../components/map/Map";
 import logo from "../assets/logo.svg";
 import Counter from "../components/Counter";
-import ListEvents from "../components/ListEvents";
+
+
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <p>Hello Vite + React !</p>
 
       <Counter />
-      <ListEvents />
+      
 
       <p>
         Edit <code>App.jsx</code> and save to test HMR updates.
@@ -35,5 +36,6 @@ export default function Home() {
         </a>
       </p>
     </header>
+    
   );
 }
