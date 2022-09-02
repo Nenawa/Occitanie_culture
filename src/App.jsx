@@ -1,13 +1,12 @@
 import Home from "./pages/Home";
-import "./App.css";
-import ListEvents from "./components/ListEvents";
-import "./components/ListEvents.css"
+import AppRouter from "./pages/_routes/AppRouter"
 
 
 function App() {
   return (
     <div className="App">
       <Home />   
+      <AppRouter />
     </div>
   );
 }
