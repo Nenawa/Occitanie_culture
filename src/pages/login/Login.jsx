@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {useForm} from "react-hook-form"
 
+import "./login.css"
+
 function Login() {
 
     const {register, handleSubmit, formState} = useForm();
@@ -11,7 +13,7 @@ function Login() {
         Api.publicRequest()
             .post("/login", formData)
             .then((response) =>  {
-                props.history.push(`/`);
+                //props.history.push(`/home`);
             })
             .catch((error) => {
               setErrorLogin("Votre identifiant ou mot de passe est incorrect. ");
@@ -24,18 +26,18 @@ function Login() {
             <div className="logo">
               <img src="" alt="logo" />
             </div>
-            <div className="d-flex flex-row justify-content-center align-items-center">
+            <div className="alert">
               <span className={errorLogin.length === 0 ? '' : 'alert'}>{errorLogin}</span>
             </div>
             <h4>Bienvenue</h4>
-            <h6 className="font-weight-light">Connectez vous pour continuer.</h6>
-            <form className="pt-3" onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-group">
+            <h6 className="f">Connectez vous pour continuer.</h6>
+            <form className="" onSubmit={handleSubmit(onSubmit)}>
+              <div className="form__groupe">
                 <input
                     type="text"
                     placeholder="Identifiant"
                     size="lg"
-                    className="form-control"
+                    className="form__imput"
                     {...register('username', { required: 'Veuillez saisir une identifant valide.'})} />
               </div>
               {
@@ -44,12 +46,12 @@ function Login() {
                     <span className="alert">{errors.username.message}</span>
                   </div>
               }
-              <div className="form-group">
+              <div className="form__groupe">
                 <input
                     type="password"
                     placeholder="Mot de passe"
                     size="lg"
-                    className="form-control"
+                    className="form__imput"
                     {...register('password', { required: 'Veuillez saisir votre mot de passe.' })} />
               </div>
               {
@@ -59,12 +61,20 @@ function Login() {
                     <span className="alert">{errors.password.message}</span>
                   </div>
               }
-              <div className="">
+              <div className="btn__groupe">
                 <button
                     disabled={isSubmitting}
                     className="btn">
                   Se connecter
                 </button>
+              </div>
+              <div className="">
+                <div className='reset__groupe'>
+                  <a href="/resetPassword" className="reset__link">Mot de passe oublié?</a>
+                </div>
+                  <div className="register__groupe">
+                    Vous n'avez pas de compte ? <a href="/register" className="register__link">S'inscrir</a>
+                  </div>
               </div>
             </form>
         </div>

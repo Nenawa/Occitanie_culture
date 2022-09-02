@@ -1,3 +1,57 @@
-.{
-    
+*{
+    margin: 0;
+    border: none;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem;
+}
+
+.form__groupe {
+    padding: 1rem 0;
+}
+
+.form__imput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.btn__groupe {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.5rem 0;
+    border-radius: 10px;
+    background-color: #DBC2CF;
+}
+
+.reset__groupe {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+}
+
+.register__groupe {
+    padding: 0.5rem;
 }
