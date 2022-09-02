@@ -71,9 +71,9 @@ function EvenementSelected() {
             </div>
 
 
-            <section>
+            <div>
                 <Map />
-            </section>
+            </div>
         </>
     );
 }

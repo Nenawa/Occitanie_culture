@@ -1,4 +1,22 @@
+
+
 .leaflet-container {
     width: 100vw;
-    height: 100vh;
+    height: 30vh;
+}
+
+.map__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem 0.5rem;
+}
+
+@media (min-width: 600px) {
+    .leaflet-container {
+        width: 50vw;
+        height: 50vh;
+    }
 }
