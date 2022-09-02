@@ -7,12 +7,7 @@ import "./components/ListEvents.css"
 function App() {
   return (
     <div className="App">
-      <Home />
-<<<<<<< HEAD
-=======
-
-      
->>>>>>> 69dffab (ajout de css en cours)
+      <Home />   
     </div>
   );
 }
