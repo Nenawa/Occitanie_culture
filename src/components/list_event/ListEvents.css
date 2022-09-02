@@ -5,17 +5,23 @@
     margin: auto;
     background-color: #3C7A89;
 }
-.listEvents ul{
-    margin: 0;
+.listEvents__ul{
+    margin-top: 0;
+    
+    padding: 0;
+    
 }
-.listEvents li{
+.listEvents__li {
+    border: 2px solid green;
     background-color: white;
-    list-style: none;
+    list-style-type: none; 
 
-    max-width: 90%;
+    max-width: 80%;
     margin: auto;
+
 }
-.listEvents__entete{
+.listEvents__li--entete{
     display: flex;
+    justify-content: space-around;
     
 }

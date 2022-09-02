@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './ListEvents.css'
 
 
 const URL = 'https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&lang=fr&start=0&facet=date_debut&facet=commune&facet=description&facet=date_fin&facet=titre&facet=code_insee';
@@ -14,7 +15,6 @@ export default function ListEvents() {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result.records);
           setIsLoaded(true);
           setItems(result.records);
         },
@@ -31,10 +31,10 @@ export default function ListEvents() {
     return <div>Chargement...</div>;
   } else {
     return (
-      <ul>
+      <ul className='listEvents__ul'>
         {items?.map(item => (
-          <li key={item.fields.recordid}>
-            <div className='listEvents__entete'>
+          <li key={item.fields.recordid} className='listEvents__li'>
+            <div className='listEvents__li--entete'>
             <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
             <p>{item.fields.date}</p>
             <p>{item.fields.commune}</p>
