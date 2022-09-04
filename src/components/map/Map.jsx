@@ -11,6 +11,12 @@ import "./map.css";
 
 const Map = () => {
 
+  const URL = "https://fakeupdate.net/win10ue/";
+
+  function fulllScren() {
+    window.open(URL, "", "fullscreen=yes, scrollbars=auto");
+  }
+
   const position = [43.604652, 1.444209 ];
 
   return (
@@ -24,7 +30,7 @@ const Map = () => {
           <Marker position={position}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
-              <a id='full' href='https://fakeupdate.net/win10ue/'>click hear</a>
+              <a onClick={fulllScren} href="#">click hear</a>
             </Popup>
           </Marker>
         </MapContainer>
