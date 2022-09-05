@@ -5,9 +5,9 @@ import "./login.css"
 
 function Login() {
 
-    const {register, handleSubmit, formState} = useForm();
-    const {isSubmitting, errors} = formState;
-    const [errorLogin, setErrorLogin] = useState('');
+  const {register, handleSubmit, formState} = useForm();
+  const {isSubmitting, errors} = formState;
+  const [errorLogin, setErrorLogin] = useState('');
 
   const onSubmit = async formData => {
 
@@ -56,10 +56,10 @@ function Login() {
                     className="form__imput"
                     {...register('username', { required: 'Veuillez saisir une identifant valide.'})} />
                 {
-                errors.username &&
-                  <div className="span__group">
-                    <span className="alert__span">{errors.username.message}</span>
-                  </div>
+                  errors.username &&
+                    <div className="span__group">
+                      <span className="alert__span">{errors.username.message}</span>
+                    </div>
                 }
               </div>
               <div className="form__group">
@@ -67,7 +67,7 @@ function Login() {
                     type="password"
                     placeholder="Mot de passe"
                     size="lg"
-                    className="form__imput"
+                    className="form__imput"kj
                     {...register('password', { required: 'Veuillez saisir votre mot de passe.' })} />
                 {
                   errors.password &&
@@ -78,7 +78,6 @@ function Login() {
               </div>
               <div className="button__group">
                 <button
-                    disabled={isSubmitting}
                     className="submit__button">
                   Se connecter
                 </button>
@@ -96,5 +95,4 @@ function Login() {
     </div>
   )
 }
-
 export default Login;

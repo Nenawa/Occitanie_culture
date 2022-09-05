@@ -5,7 +5,6 @@ import "./register.css"
 
 function Register() {
 
-
   const {register, handleSubmit, formState} = useForm();
   const {isSubmitting, errors} = formState;
   const [signupError, setSignupError] = useState('');
@@ -20,7 +19,7 @@ function Register() {
       body: JSON.stringify(formData)
     }
 
-    fetch(`http://localhost:8080/login`, option)
+    fetch(`http://localhost:8080/register`, option)
       .then((response) => {
         props.history.push(`/login`);
       })
@@ -50,13 +49,13 @@ function Register() {
                   size="lg"
                   className="form__imput"
                   {...register('username', { required: 'Veuillez saisir une identifant valide.'})} />
+              {
+                errors.username &&
+                  <div className="span__group">
+                    <span className="alert__span">{errors.username.message}</span>
+                  </div>
+              }
             </div>
-            {
-              errors.username &&
-                <div className="span__group">
-                  <span className="alert__span">{errors.username.message}</span>
-                </div>
-            }
             <div className="form__group">
               <input
                   type="password"
@@ -64,25 +63,25 @@ function Register() {
                   size="lg"
                   className="form__imput"
                   {...register('password', { required: 'Veuillez saisir votre mot de passe.' })} />
+              {
+                errors.password &&
+                  <div className="span__group">
+                    <span className="alert__span">{errors.password.message}</span>
+                  </div>
+              }
             </div>
-            {
-              errors.password &&
-                <div className="span__group">
-                  <span className="alert__span">{errors.password.message}</span>
-                </div>
-            }
             <div className="form__group">
               <input type="password"
                 className="form__imput"
                 placeholder="Confirmer le mot de passe"
                 {...register('confirmPassword', { required: 'Veuillez confirmer votre mot de passe.'})}/>
+              {
+                errors.confirmPassword &&
+                  <div className="span__group">
+                    <span className="alert__span">{errors.confirmPassword.message}</span>
+                </div>
+              }
             </div>
-            {
-              errors.confirmPassword &&
-                <div className="span__group">
-                  <span className="alert__span">{errors.confirmPassword.message}</span>
-              </div>
-            }
             <div className="button__group">
               <button
                   disabled={isSubmitting}

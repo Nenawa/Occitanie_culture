@@ -46,16 +46,15 @@
 }
 
 .span__group {
+    width: 100%;
     display: flex;
     align-content: flex-start;
     justify-content: flex-start;
 }
 
 .alert__span {
-    display: flex;
-    justify-content: flex-start;
     color: red;
-    size: 8px;
+    padding: 0.5rem 0 0 0;
 }
 
 .form__imput {

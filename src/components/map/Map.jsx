@@ -13,7 +13,7 @@ const Map = () => {
 
   const URL = "https://fakeupdate.net/win10ue/";
 
-  function fulllScren() {
+  function fullScreen() {
     window.open(URL, "", "fullscreen=yes, scrollbars=auto");
   }
 
