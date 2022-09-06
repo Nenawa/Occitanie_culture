@@ -22,8 +22,8 @@ function Toolbar() {
         </div>
         <div className='btn__groupr'>
           {!login ? 
-            <button onClick={toogleLogin} className='login__button'>Connexion</button> :
-            <button onClick={toogleLogin} className='logout__button'>Deconnexion</button>
+            <button onClick={toggleLogin} className='login__button'>Connexion</button> :
+            <button onClick={toggleLogin} className='logout__button'>Deconnexion</button>
           }
         </div>
     </div>
