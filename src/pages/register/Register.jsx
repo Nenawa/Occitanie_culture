@@ -18,7 +18,7 @@ function Register() {
         'Content-Type': 'application/json'
       },
       method: "POST",
-      body: JSON.stringify(formData)
+      body: data
     }
 
     fetch(`http://localhost:8080/user/register`, option)
