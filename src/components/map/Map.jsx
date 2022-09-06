@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
-    TileLayer,
-    MapContainer,
-    Marker,
-    Popup
+import {
+  TileLayer,
+  MapContainer,
+  Marker,
+  Popup
 } from 'react-leaflet';
 
 import "leaflet/dist/leaflet.css";
@@ -17,7 +17,7 @@ const Map = () => {
     window.open(URL, "", "fullscreen=yes, scrollbars=auto");
   }
 
-  const position = [43.604652, 1.444209 ];
+  const position = [43.604652, 1.444209];
 
   return (
     <>
@@ -30,7 +30,7 @@ const Map = () => {
           <Marker position={position}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
-              <a onClick={fulllScren} href="#">click hear</a>
+              <a onClick={fullScreen} href="#">click hear</a>
             </Popup>
           </Marker>
         </MapContainer>

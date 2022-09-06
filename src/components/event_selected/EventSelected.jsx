@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+
+import './style.css';
+
 import Map from "../map/Map";
 
 
-function EvenementSelected() {
+function EventSelected() {
     const myID = "e79f5d5dbea59bdf4b322f93e5caa86d91ad1ba1";
     const object = {
         "datasetid": "agendas-participatif-des-sorties-en-occitanie",
@@ -78,4 +81,4 @@ function EvenementSelected() {
     );
 }
 
-export default EvenementSelected;
+export default EventSelected;
