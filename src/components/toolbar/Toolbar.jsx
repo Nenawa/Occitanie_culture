@@ -7,7 +7,7 @@ function Toolbar() {
 
   const [login, setLogin] = useState(false);
 
-  function toogleLogin() {
+  function toggleLogin() {
     if(!login) {
       setLogin(true);
     } else {
