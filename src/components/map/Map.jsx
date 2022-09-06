@@ -30,7 +30,7 @@ const Map = () => {
           <Marker position={position}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
-              <a onClick={fulllScren} href="#">click hear</a>
+              <a onClick={fullScreen} href="#">click hear</a>
             </Popup>
           </Marker>
         </MapContainer>

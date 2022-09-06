@@ -11,9 +11,9 @@ import PrivateRoute from '../_privateRoute/PrivateRoute';
 function AppRouter() {
   return (
     <Routes>
-        <Route exact path='/' element={<PrivateRoute/>}>
-           <Route path="/" element={<Home />} />
+        <Route exact path='/toto' element={<PrivateRoute/>}>
         </Route>
+        <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
     </Routes>
