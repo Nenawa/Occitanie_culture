@@ -1,8 +1,8 @@
 import React from 'react'
 import {
-    Routes,
-    Route,
-  } from "react-router-dom";
+  Routes,
+  Route,
+} from "react-router-dom";
 import Home from '../Home';
 import Login from '../login/Login';
 import Register from '../register/Register';
@@ -11,11 +11,11 @@ import PrivateRoute from '../_privateRoute/PrivateRoute';
 function AppRouter() {
   return (
     <Routes>
-        <Route exact path='/' element={<PrivateRoute/>}>
-           <Route path="/" element={<Home />} />
-        </Route>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+      <Route exact path='/' element={<PrivateRoute />}>
+        <Route path="/" element={<Home />} />
+      </Route>
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
     </Routes>
   )
 }
