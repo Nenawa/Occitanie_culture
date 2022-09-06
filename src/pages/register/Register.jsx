@@ -8,8 +8,10 @@ function Register() {
   const { register, handleSubmit, formState } = useForm();
   const { isSubmitting, errors } = formState;
   const [signupError, setSignupError] = useState('');
+  const formRef = useRef(null)
 
-  const onSubmit = async formData => {
+  const onSubmit = () => {
+    const data = new FormData(formRef.current)
     let option = {
       headers: {
         'Accept': 'application/json',
@@ -20,6 +22,7 @@ function Register() {
     }
 
     fetch(`http://localhost:8080/user/register`, option)
+      .then((rep) => rep.json())
       .then((response) => {
         props.history.push(`/login`);
       })
@@ -41,7 +44,7 @@ function Register() {
           <h1>Nouveau ici </h1>
           <h2 className="">L'inscription est facile. Cela ne prend que quelques minutes.</h2>
         </div>
-        <form className="register__form" onSubmit={handleSubmit(onSubmit)}>
+        <form ref={formRef} className="register__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="form__group">
             <input
               type="text"
