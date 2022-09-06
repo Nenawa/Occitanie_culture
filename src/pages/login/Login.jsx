@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form"
 
 import "./login.css"
 
-function Login() {
+function Login(props) {
 
   const {register, handleSubmit, formState} = useForm();
   const {isSubmitting, errors} = formState;
@@ -14,18 +14,21 @@ function Login() {
     let option = {
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://192.168.1.2:8080/'
       },
       method: "POST",
-      body: JSON.stringify(formData)
+      body: formData,
+      mode: "no-cors"
     }
 
-    fetch("http://localhost:8080/login", option)
+    fetch("http://192.168.1.2:8080/api/user/connect", option)
       .then((response) =>  {
         if (response.data.success === false) {
           setErrorLogin("Identifiant ou mot de passe incorrect")
         } else {
           localStorage.setItem("auth", response.data.token);
+          console.log(props.hestory);
           props.history.push("/");
         }
       })
@@ -54,7 +57,7 @@ function Login() {
                     placeholder="Identifiant"
                     size="lg"
                     className="form__imput"
-                    {...register('username', { required: 'Veuillez saisir une identifant valide.'})} />
+                    {...register('nameAccount', { required: 'Veuillez saisir une identifant valide.'})} />
                 {
                   errors.username &&
                     <div className="span__group">
@@ -67,7 +70,7 @@ function Login() {
                     type="password"
                     placeholder="Mot de passe"
                     size="lg"
-                    className="form__imput"kj
+                    className="form__imput"
                     {...register('password', { required: 'Veuillez saisir votre mot de passe.' })} />
                 {
                   errors.password &&

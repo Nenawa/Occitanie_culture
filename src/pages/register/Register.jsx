@@ -13,18 +13,20 @@ function Register() {
     let option = {
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://192.168.1.2:8080/register'
       },
       method: "POST",
-      body: JSON.stringify(formData)
+      body: formData,
+      mode: "no-cors"
     }
 
-    fetch(`http://localhost:8080/register`, option)
+    fetch(`http://192.168.1.2:8080/api/user/register`, option)
       .then((response) => {
         props.history.push(`/login`);
       })
       .catch((error) => {
-        setSignupError(error.response.data.message);
+        setSignupError(error);
       });
   }
 
@@ -48,7 +50,7 @@ function Register() {
                   placeholder="Identifiant"
                   size="lg"
                   className="form__imput"
-                  {...register('username', { required: 'Veuillez saisir une identifant valide.'})} />
+                  {...register('nameAccount', { required: 'Veuillez saisir une identifant valide.'})} />
               {
                 errors.username &&
                   <div className="span__group">
