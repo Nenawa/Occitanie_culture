@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+
 import './style.css';
+
+import Map from "../map/Map";
+
 
 function EvenementSelected() {
     const myID = "e79f5d5dbea59bdf4b322f93e5caa86d91ad1ba1";
@@ -54,19 +58,26 @@ function EvenementSelected() {
     .then((res) => console.log(setState));
     }, []); */
     return (
-        <div className="rect">
-            <div className="left">
-                <h1>{object.fields.titre}</h1>
-                <div className="text">
-                    <p className="colorText">{object.fields.description}</p>
+        <>
+            <div className="rect">
+                <div className="left">
+                    <h1>{object.fields.titre}</h1>
+                    <div className="text">
+                        <p className="colorText">{object.fields.description}</p>
+                    </div>
+                </div>
+                <div className="right">
+                    <h2>{object.fields.adresse}</h2>
+                    <h2>{object.fields.date_debut}</h2>
+                    <h2>{object.fields.date_fin}</h2>
                 </div>
             </div>
-            <div className="right">
-                <h2>{object.fields.adresse}</h2>
-                <h2>{object.fields.date_debut}</h2>
-                <h2>{object.fields.date_fin}</h2>
+
+
+            <div>
+                <Map />
             </div>
-        </div>
+        </>
     );
 }
 

@@ -1,12 +1,12 @@
 import Home from "./pages/Home";
+import AppRouter from "./pages/_routes/AppRouter"
 
-import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      
+      <AppRouter />
     </div>
   );
 }
