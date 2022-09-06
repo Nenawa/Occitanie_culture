@@ -1,4 +1,4 @@
-import EvenementSelected from "../components/EvenementSelected/EvenementSelected";
+import EventSelected from "../components/event_selected/EventSelected";
 import ListEvents from "../components/list_event/ListEvents";
 import SearchBar from "../components/Search_bar/SearchBar";
 
@@ -17,7 +17,7 @@ export default function Home() {
         </section>
 
         <section>
-          <EvenementSelected />
+          <EventSelected />
         </section>
 
       </main>
