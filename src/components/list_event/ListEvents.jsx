@@ -35,9 +35,13 @@ export default function ListEvents() {
         {items?.map(item => (
           <li key={item.fields.recordid} className='listEvents__li'>
             <div className='listEvents__li--entete'>
-            <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
-            <p>{item.fields.date}</p>
-            <p>{item.fields.commune}</p>
+              <div>
+              <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
+              </div>
+              
+                <p>{item.fields.date}</p>
+                <p>{item.fields.commune}</p>
+              
             </div>
             <p>{(item.fields.description).replace('&nbsp;', ' ')}</p>
           </li>
