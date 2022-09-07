@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import './ListEvents.css'
+import EvenementSelected from "../event_selected/EvenementSelected";
 
 
-const URL = 'https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&lang=fr&start=0&facet=date_debut&facet=commune&facet=description&facet=date_fin&facet=titre&facet=code_insee';
+const URL = 'https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&timezone=Europe%2FBerlin';
+
+
+
+
 
 
 export default function ListEvents() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState(null);
+  const [item, setItem] = useState(null);
+
+  function handleClick(evnt) {
+   
+    setItem(evnt);
+  }
 
   useEffect(() => {
     fetch(URL)
@@ -31,22 +42,26 @@ export default function ListEvents() {
     return <div>Chargement...</div>;
   } else {
     return (
-      <ul className='listEvents__ul'>
-        {items?.map(item => (
-          <li key={item.fields.recordid} className='listEvents__li'>
-            <div className='listEvents__li--entete'>
-              <div>
-              <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
-              </div>
-              
+      <>
+        <ul className='listEvents__ul'>
+          {items?.map(item => (
+            <li key={item.recordid} onClick={() => handleClick(item)} style={{ cursor: 'pointer' }} className='listEvents__li'>
+              <div className='listEvents__li--entete'>
+                <div>
+                  <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
+                </div>
                 <p>{item.fields.date}</p>
                 <p>{item.fields.commune}</p>
-              
-            </div>
-            <p>{(item.fields.description).replace('&nbsp;', ' ')}</p>
-          </li>
-        ))}
-      </ul>
+
+              </div>
+              <p>{(item.fields.description).replace('&nbsp;', ' ')}</p>
+            </li>
+          ))}
+          {/* <button onClick={'affiche 10 résultats de plus'}> + </button> */}
+        </ul>
+        {item ? <EvenementSelected  item={item} /> : null}
+        
+      </>
     );
   }
 }
