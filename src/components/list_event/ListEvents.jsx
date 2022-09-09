@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './ListEvents.css'
-import EvenementSelected from "../event_selected/EvenementSelected";
+import EventSelected from "../event_selected/EventSelected";
 
 
 const URL = 'https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&timezone=Europe%2FBerlin';
@@ -61,14 +61,14 @@ export default function ListEvents() {
                 <p>{item.fields.commune}</p>
 
               </div>
-              <p className={state ? 'listEvents__ul' : 'listEvents__ul--display'}>>{(item.fields.description).replace('&nbsp;', ' ')}</p>
+              <p className={state ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.description).replace('&nbsp;', ' ')}</p>
             </li>
           ))}
           {/* <button onClick={'affiche 10 résultats de plus'}> + </button> */}
         </ul>
 
         <div >
-          {item ? <EvenementSelected item={item} /> : null}
+          {item ? <EventSelected item={item} /> : null}
 
         </div>
 

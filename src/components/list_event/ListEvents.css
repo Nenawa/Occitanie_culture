@@ -3,11 +3,17 @@
     margin: auto;
     background-color: #3C7A89;
 
-    margin-top: 9.375rem;
+    margin-top: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 0;
+    
 }
+.listEvents__ul--reduced {
+    display: none;
+    
+}
+.listEvents__ul--p {}
 
 .listEvents__li {
     border: 2px solid grey;
@@ -22,36 +28,50 @@
     padding: 1rem;
 
 }
-/* début switch de l'affichage de l'evenement */
-.listEvents__ul--reduced{
-    background-color:#3C7A89;
-    padding: 10px;
-    max-width: 326px;
-    margin-top: 9.375rem;
-  }
-  .listEvents__ul--display{
-    display: none;
-  }
-  /* fin switch de l'affichage de l'evenement */
+
 
 .listEvents__li--entete {
     text-align: center;
     font-weight: bold;
     padding-bottom: 0.5rem;
 }
-.listEvents__li--entete>div:first-child{
+
+.listEvents__li--entete>div:first-child {
     padding-bottom: 0.5rem;
 }
 
-.evtSelected{
+.evtSelected {
     display: flex;
 }
 
 
 @media screen and (min-width: 950px) {
-    .listEvents__li--entete{
-        display: flex;
-        justify-content: space-between;
+    .listEvents__ul{
+        border-radius: 0.2rem;
     }
-   
-  }
+    .listEvents__li--entete {
+        /* display: flex; */
+        /* justify-content: space-between; */
+    }
+
+    /* début switch de l'affichage de l'evenement */
+    .listEvents__ul--reduced {
+        background-color: #3C7A89;
+        padding: 10px;
+        max-width: 326px;
+        margin-top: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        display: block;
+        border-radius: 0.2rem;
+    }
+    .listEvents__li--entete>p:last-child {
+        padding-top: 0.5rem;
+    }
+    /* masquer le paragraphe quand la liste des evts est réduite à gauche */
+    .listEvents__ul--display {
+        display: none;
+    }
+
+    /* fin switch de l'affichage de l'evenement */
+}
