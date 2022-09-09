@@ -16,10 +16,7 @@ export default function Home() {
           <ListEvents />
         </section>
 
-        <section>
-          
-        </section>
-
+      
       </main>
     </>
 

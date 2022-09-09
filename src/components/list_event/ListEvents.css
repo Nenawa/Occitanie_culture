@@ -22,6 +22,17 @@
     padding: 1rem;
 
 }
+/* début switch de l'affichage de l'evenement */
+.listEvents__ul--reduced{
+    background-color:#3C7A89;
+    padding: 10px;
+    max-width: 326px;
+    margin-top: 9.375rem;
+  }
+  .listEvents__ul--display{
+    display: none;
+  }
+  /* fin switch de l'affichage de l'evenement */
 
 .listEvents__li--entete {
     text-align: center;
@@ -30,6 +41,10 @@
 }
 .listEvents__li--entete>div:first-child{
     padding-bottom: 0.5rem;
+}
+
+.evtSelected{
+    display: flex;
 }
 
 

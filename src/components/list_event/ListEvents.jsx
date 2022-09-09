@@ -15,10 +15,16 @@ export default function ListEvents() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState(null);
   const [item, setItem] = useState(null);
+  const [state, setState]= useState(true);
+
 
   function handleClick(evnt) {
-   
     setItem(evnt);
+    setState(!state);
+
+    console.log('evnt', evnt);
+    console.log('item', item);
+
   }
 
   useEffect(() => {
@@ -42,8 +48,9 @@ export default function ListEvents() {
     return <div>Chargement...</div>;
   } else {
     return (
-      <>
-        <ul className='listEvents__ul'>
+      <div className='evtSelected'>
+
+        <ul className={state ? 'listEvents__ul' : 'listEvents__ul--reduced'}>
           {items?.map(item => (
             <li key={item.recordid} onClick={() => handleClick(item)} style={{ cursor: 'pointer' }} className='listEvents__li'>
               <div className='listEvents__li--entete'>
@@ -54,14 +61,20 @@ export default function ListEvents() {
                 <p>{item.fields.commune}</p>
 
               </div>
-              <p>{(item.fields.description).replace('&nbsp;', ' ')}</p>
+              <p className={state ? 'listEvents__ul' : 'listEvents__ul--display'}>>{(item.fields.description).replace('&nbsp;', ' ')}</p>
             </li>
           ))}
           {/* <button onClick={'affiche 10 résultats de plus'}> + </button> */}
         </ul>
-        {item ? <EvenementSelected  item={item} /> : null}
-        
-      </>
+
+        <div >
+          {item ? <EvenementSelected item={item} /> : null}
+
+        </div>
+
+
+
+      </div>
     );
   }
 }
