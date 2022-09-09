@@ -15,12 +15,12 @@ export default function ListEvents() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState(null);
   const [item, setItem] = useState(null);
-  const [state, setState]= useState(true);
+  const [state, setState] = useState(true);
 
 
   function handleClick(evnt) {
     setItem(evnt);
-    setState(!state);
+    setState(false);
 
     console.log('evnt', evnt);
     console.log('item', item);
@@ -48,11 +48,11 @@ export default function ListEvents() {
     return <div>Chargement...</div>;
   } else {
     return (
-      <div className='evtSelected'>
+      <div className='listEvents'>
 
         <ul className={state ? 'listEvents__ul' : 'listEvents__ul--reduced'}>
           {items?.map(item => (
-            <li key={item.recordid} onClick={() => handleClick(item)} style={{ cursor: 'pointer' }} className='listEvents__li'>
+            <li key={item.recordid} onClick={() => handleClick(item)}  className='listEvents__li'>
               <div className='listEvents__li--entete'>
                 <div>
                   <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
@@ -64,16 +64,17 @@ export default function ListEvents() {
               <p className={state ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.description).replace('&nbsp;', ' ')}</p>
             </li>
           ))}
-          {/* <button onClick={'affiche 10 résultats de plus'}> + </button> */}
+          <div>
+        </div>
+          <button > + </button>
         </ul>
+          <button className='ListEvents__slide' type='button'> ... </button>
 
         <div >
           {item ? <EventSelected item={item} /> : null}
 
         </div>
-
-
-
+        
       </div>
     );
   }
