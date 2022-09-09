@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+
+import './style.css';
+
 import Map from "../map/Map";
 
 
-function EvenementSelected(props) {
+function EventSelected(props) {
     const myID = "e79f5d5dbea59bdf4b322f93e5caa86d91ad1ba1";
     const object = props.item;
     const [state, setState] = useState(null);
@@ -38,4 +41,4 @@ function EvenementSelected(props) {
     );
 }
 
-export default EvenementSelected;
+export default EventSelected;

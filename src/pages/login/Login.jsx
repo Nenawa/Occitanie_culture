@@ -3,77 +3,94 @@ import {useForm} from "react-hook-form"
 
 import "./login.css"
 
-function Login() {
+function Login(props) {
 
-    const {register, handleSubmit, formState} = useForm();
-    const {isSubmitting, errors} = formState;
-    const [errorLogin, setErrorLogin] = useState('');
+  const {register, handleSubmit, formState} = useForm();
+  const {isSubmitting, errors} = formState;
+  const [errorLogin, setErrorLogin] = useState('');
 
-    const onSubmit = async formData => {
-        Api.publicRequest()
-            .post("/login", formData)
-            .then((response) =>  {
-                //props.history.push(`/home`);
-            })
-            .catch((error) => {
-              setErrorLogin("Votre identifiant ou mot de passe est incorrect. ");
-            });
-      }
+  const onSubmit = async formData => {
+
+    let option = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://192.168.1.2:8080/'
+      },
+      method: "POST",
+      body: formData,
+      mode: "no-cors"
+    }
+
+    fetch("http://192.168.1.2:8080/api/user/connect", option)
+      .then((response) =>  {
+        if (response.data.success === false) {
+          setErrorLogin("Identifiant ou mot de passe incorrect")
+        } else {
+          localStorage.setItem("auth", response.data.token);
+          console.log(props.hestory);
+          props.history.push("/");
+        }
+      })
+      .catch((error) => {
+        setErrorLogin("Votre identifiant ou mot de passe est incorrect. ");
+      });
+  }
 
   return (
     <div className="container">
-        <div className="auth-form">
+        <div className="wrapper__form">
             <div className="logo">
               <img src="" alt="logo" />
             </div>
-            <div className="alert">
+            <div className="span__group">
               <span className={errorLogin.length === 0 ? '' : 'alert'}>{errorLogin}</span>
             </div>
-            <h4>Bienvenue</h4>
-            <h6 className="f">Connectez vous pour continuer.</h6>
-            <form className="" onSubmit={handleSubmit(onSubmit)}>
-              <div className="form__groupe">
+            <div className="title__group">
+              <h1>Bienvenue</h1>
+              <h2>Connectez vous pour continuer.</h2>
+            </div>
+            <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
+              <div className="form__group">
                 <input
                     type="text"
                     placeholder="Identifiant"
                     size="lg"
                     className="form__imput"
-                    {...register('username', { required: 'Veuillez saisir une identifant valide.'})} />
+                    {...register('nameAccount', { required: 'Veuillez saisir une identifant valide.'})} />
+                {
+                  errors.username &&
+                    <div className="span__group">
+                      <span className="alert__span">{errors.username.message}</span>
+                    </div>
+                }
               </div>
-              {
-                errors.username &&
-                  <div className="mb-3">
-                    <span className="alert">{errors.username.message}</span>
-                  </div>
-              }
-              <div className="form__groupe">
+              <div className="form__group">
                 <input
                     type="password"
                     placeholder="Mot de passe"
                     size="lg"
                     className="form__imput"
                     {...register('password', { required: 'Veuillez saisir votre mot de passe.' })} />
+                {
+                  errors.password &&
+                    <div className="span__group">
+                      <span className="alert__span">{errors.password.message}</span>
+                    </div>
+                }
               </div>
-              {
-                errors.password &&
-                  <div className="mb-3">
-                    <FontAwesome name="info-circle"/>
-                    <span className="alert">{errors.password.message}</span>
-                  </div>
-              }
-              <div className="btn__groupe">
+              <div className="button__group">
                 <button
-                    disabled={isSubmitting}
-                    className="btn">
+                    className="submit__button">
                   Se connecter
                 </button>
               </div>
               <div className="">
-                <div className='reset__groupe'>
+                <div className='reset__group'>
                   <a href="/resetPassword" className="reset__link">Mot de passe oublié?</a>
                 </div>
-                  <div className="register__groupe">
-                    Vous n'avez pas de compte ? <a href="/register" className="register__link">S'inscrir</a>
+                  <div className="register__group">
+                     Vous n'avez pas de compte ? <a href="/register" className="register__link">S'inscrire</a>
                   </div>
               </div>
             </form>
@@ -81,5 +98,4 @@ function Login() {
     </div>
   )
 }
-
 export default Login;

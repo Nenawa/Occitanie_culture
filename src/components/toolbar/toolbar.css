@@ -1,0 +1,29 @@
+.wrapper__toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo__img {
+    width: 10rem;
+    height: 4rem;
+}
+
+.btn__groupr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login__button, .logout__button {
+    margin-right: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background: none;
+}
+
+.login__button:hover, .logout__button:hover {
+    color: #C10230;
+  }
+  
