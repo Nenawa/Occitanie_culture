@@ -19,7 +19,7 @@ function SearchBar() {
             })
     }, []);
 
-    function handleChange() {
+    const handleChange = () => {
         const link = `https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie${searchRef.current.value ? `&q=${searchRef.current.value.replaceAll(" ", "%20")}` : ""}&lang=fr&facet=type&facet=thematique&facet=date_debut&facet=commune${communeRef.current.value ? `&refine.commune=${communeRef.current.value.replaceAll(" ", "%20")}` : ""}${typeRef.current.value ? `&refine.type=${typeRef.current.value.replaceAll(" ", "%20")}` : ""}${dateRef.current.value ? `&refine.start_date=${dateRef.current.value}` : ""}`
         fetch(link)
             .then((rep) => rep.json())
@@ -32,10 +32,8 @@ function SearchBar() {
         console.log(divMoreFilterRef.current.className)
         if (divMoreFilterRef.current.className.indexOf("showButton") == -1) {
             setFilterVisible(true)
-            divMoreFilterRef.current.className = divMoreFilterRef.current.className + " showButton"
         } else {
             setFilterVisible(false)
-            divMoreFilterRef.current.className = divMoreFilterRef.current.className.replace(" showButton", "")
         }
     }
 
@@ -46,7 +44,7 @@ function SearchBar() {
         <div className='searchBar'>
             <div>
                 <input onChange={handleChange} className='searchBar__input' ref={searchRef} type="text" placeholder="Rechercher ..."></input>
-                <div ref={divMoreFilterRef} className='searchBar__inputHide'>
+                <div ref={divMoreFilterRef} className={`searchBar__inputHide ${filterVisible ? "showButton" : ""}`}>
                     <select className='searchBar__input searchBar__select' onChange={handleChange} ref={communeRef}>
                         <option value="">Commune</option>
                         {communes?.map((elm) => <option key={elm.name} title={elm.name}>{elm.name.length > 20 ? `${elm.name.slice(0, 20)}...` : elm.name}</option>)}

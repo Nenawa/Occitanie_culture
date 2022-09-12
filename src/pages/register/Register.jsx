@@ -13,10 +13,6 @@ function Register() {
   const onSubmit = () => {
     const data = new FormData(formRef.current)
     let option = {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
       method: "POST",
       body: data
     }
