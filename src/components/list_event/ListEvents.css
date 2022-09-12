@@ -1,27 +1,18 @@
 .listEvents__ul {
     max-width: 56.25rem;
-
     background-color: #3C7A89;
-
     margin-top: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    
+
     padding-bottom: 1rem;
     padding-left: 0;
-
-
     border-radius: 2rem;
-
-
 }
-
+/* sur le format mobile, la liste n'est pas réduite à gauche , c'est soit un bouton, soit elle est affichée complètement */
 .listEvents__ul--reduced {
     display: none;
-
 }
-
-
 
 .listEvents__li {
     border: 2px solid grey;
@@ -50,10 +41,19 @@
 }
 
 /* placement de l'evenement selectionné à droite de la liste des evts*/
-.listEvents{
+.listEvents {
     display: flex;
 }
 
+.ListEvents__slide {
+    background-color: #3C7A89;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    height: 95vh;
+}
 
 @media screen and (min-width: 950px) {
     .listEvents__ul {
@@ -86,6 +86,7 @@
     .listEvents__ul--display {
         display: none;
     }
-   
+
     /* fin switch de l'affichage de l'evenement */
+
 }

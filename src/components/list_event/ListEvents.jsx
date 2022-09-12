@@ -6,10 +6,6 @@ import EventSelected from "../event_selected/EventSelected";
 const URL = 'https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&timezone=Europe%2FBerlin';
 
 
-
-
-
-
 export default function ListEvents() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,7 +20,11 @@ export default function ListEvents() {
 
     console.log('evnt', evnt);
     console.log('item', item);
+  }
 
+  function handleSlide(state){
+    
+    setState(!state);
   }
 
   useEffect(() => {
@@ -68,8 +68,9 @@ export default function ListEvents() {
         </div>
           <button > + </button>
         </ul>
-          <button className='ListEvents__slide' type='button'> ... </button>
-
+        
+          <button  className={state ?'listEvents__ul--reduced' :'ListEvents__slide'} onClick={() => handleSlide(state)} type='button'> ... </button>
+          
         <div >
           {item ? <EventSelected item={item} /> : null}
 
