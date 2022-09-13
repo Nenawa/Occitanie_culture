@@ -9,9 +9,11 @@
     padding-left: 0;
     border-radius: 2rem;
 }
+
 /* sur le format mobile, la liste n'est pas réduite à gauche , c'est soit un bouton, soit elle est affichée complètement */
 .listEvents__ul--reduced {
     display: none;
+
 }
 
 .listEvents__li {
@@ -29,7 +31,6 @@
     cursor: pointer;
 }
 
-
 .listEvents__li--entete {
     text-align: center;
     font-weight: bold;
@@ -45,25 +46,21 @@
     display: flex;
 }
 
-.ListEvents__slide {
-    background-color: #3C7A89;
-    margin-top: 2rem;
+.ListEvents__slide--button {
+    background-color: #DBC2CF;
+    margin-top: 20rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    height: 95vh;
+    height: 20vh;
+    width: 3.125rem;
 }
 
 @media screen and (min-width: 950px) {
     .listEvents__ul {
         margin: auto;
         padding-top: 1rem;
-    }
-
-    .listEvents__li--entete {
-        /* display: flex; */
-        /* justify-content: space-between; */
     }
 
     /* début switch de l'affichage de l'evenement */
@@ -73,9 +70,20 @@
         max-width: 326px;
         margin-top: 2rem;
         margin-left: 1rem;
-        margin-right: 1rem;
         display: block;
         border-radius: 0.2rem;
+
+        height: 98vh; 
+        overflow: scroll;
+    }
+
+    .listEvents__ul--button {
+        width: 0;
+        display: none;
+    }
+
+    .ListEvents__slide--button {
+        margin-left: 0;
     }
 
     .listEvents__li--entete>p:last-child {
