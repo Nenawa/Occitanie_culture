@@ -13,9 +13,10 @@
 /* sur le format mobile, la liste n'est pas réduite à gauche , c'est soit un bouton, soit elle est affichée complètement */
 .listEvents__ul--reduced {
     display: none;
-
 }
-
+.listEvents__ul--button{
+    display: none;
+}
 .listEvents__li {
     border: 2px solid grey;
     border-radius: 2rem;
@@ -45,7 +46,16 @@
 .listEvents {
     display: flex;
 }
-
+.listEvents__button{
+    display: flex;
+    justify-content: space-evenly;
+   
+    
+}
+.listEvents__button button{
+    cursor: pointer;
+    border-radius: 00.2rem;
+}
 .ListEvents__slide--button {
     background-color: #DBC2CF;
     margin-top: 20rem;

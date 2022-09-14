@@ -3,26 +3,46 @@ import './ListEvents.css'
 import EventSelected from "../event_selected/EventSelected";
 
 
-// const URL = 'https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&timezone=Europe%2FBerlin';
-
-
-
 export default function ListEvents() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState(null);
   const [item, setItem] = useState(null);
   const [state, setState] = useState(true);
-  const [rows, setRows] = useState(10);
-  
-  let URL = `https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=${rows}&start=10&sort=date_debut&timezone=europe%2FBerlin`
+  const [start, setStart] = useState(0);
 
-  function increment(rows, URL){
-    setRows(rows + 10);
-    URL = `https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=${rows}&start=10&sort=date_debut&timezone=europe%2FBerlin`
+  let URL = `https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
+
+  function increment(start) {
+    setStart(start + 10);
+
+    fetch(URL)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.records);
+        },
+        (err) => {
+          setIsLoaded(true);
+          setError(err);
+        }
+      )
   }
-  function decrement(rows){
-   (rows === 10) ? setRows(rows) : setRows(rows - 10);
+  function decrement(start) {
+    (start === 10) ? setStart(start) : setStart(start - 10);
+    fetch(URL)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.records);
+        },
+        (err) => {
+          setIsLoaded(true);
+          setError(err);
+        }
+      )
   }
 
   function handleClick(evnt) {
@@ -42,7 +62,6 @@ export default function ListEvents() {
         (result) => {
           setIsLoaded(true);
           setItems(result.records);
-          console.log(result.records);
         },
         (err) => {
           setIsLoaded(true);
@@ -58,10 +77,10 @@ export default function ListEvents() {
   } else {
     return (
       <div className='listEvents'>
-        
+
 
         <ul className={state ? 'listEvents__ul' : 'listEvents__ul--reduced'}>
-         
+
           {items?.map(item => (
             <li key={item.recordid} onClick={() => handleClick(item)} className='listEvents__li'>
               <div className='listEvents__li--entete'>
@@ -77,19 +96,17 @@ export default function ListEvents() {
           ))}
           <div>
           </div>
-           {/* afficher les 10 evenements suivants qui s'incrémente de 10 en 10*/}
-           <div className='listEvents__button'>
-          <button type='button' onClick={() => increment(rows)}> suivants </button>
-          <button type='button' onClick={() => decrement(rows)}> précédents </button>
-         { console.log(rows)}
-         </div>
+
+          <div className='listEvents__button'>
+            <button type='button' onClick={() => increment(start)}> suivants </button>
+            <button type='button' onClick={() => decrement(start)}> précédents </button>
+          </div>
         </ul>
 
         <button className={state ? 'listEvents__ul--button' : 'ListEvents__slide--button'} onClick={() => handleSlide(state)} type='button'> ... </button>
 
         <div >
           {item ? <EventSelected item={item} /> : null}
-
         </div>
 
       </div>
