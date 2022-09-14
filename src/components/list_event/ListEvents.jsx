@@ -15,10 +15,11 @@ export default function ListEvents() {
   const [state, setState] = useState(true);
   const [rows, setRows] = useState(10);
   
-  const URL = `https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=${rows}&start=10&sort=date_debut&timezone=europe%2FBerlin`
+  let URL = `https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=${rows}&start=10&sort=date_debut&timezone=europe%2FBerlin`
 
-  function increment(rows){
+  function increment(rows, URL){
     setRows(rows + 10);
+    URL = `https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=${rows}&start=10&sort=date_debut&timezone=europe%2FBerlin`
   }
   function decrement(rows){
    (rows === 10) ? setRows(rows) : setRows(rows - 10);
@@ -77,8 +78,7 @@ export default function ListEvents() {
           <div>
           </div>
            {/* afficher les 10 evenements suivants qui s'incrémente de 10 en 10*/}
-           <div>
-            {/* attention à ne pas descendre en dessous de zero : ajouter une condition */}
+           <div className='listEvents__button'>
           <button type='button' onClick={() => increment(rows)}> suivants </button>
           <button type='button' onClick={() => decrement(rows)}> précédents </button>
          { console.log(rows)}
