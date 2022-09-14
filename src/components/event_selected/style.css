@@ -1,31 +1,104 @@
-.rect {
-    background-color: #3C7A89;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-radius: 10px;
+@media (min-width: 1250px) {
+
+    .rect {
+        background-color: #3C7A89;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 10px;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        min-width: 60rem;
+    }
+
+    .text {
+        width: 60%;
+        background-color: white;
+        margin-left: 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .colorText {
+        color: #373F51;
+    }
+
+
+    .right {
+        display: column;
+        align-items: right;
+        width: 30%;
+        height: 10%;
+        text-align: right;
+        float: right;
+        margin-right: 2rem;
+        margin-top: -5rem;
+    }
+
+    .title {
+        width: 60%;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        margin-left: 2.1rem;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    h3 {
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
 }
 
-.text {
-    width: 60%;
-    background-color: white;
-    margin-left: 20%;
-    border-radius: 10px;
-}
+@media (max-width: 1250px) {
 
-.colorText {
-    color: #373F51;
-}
+    .rect {
+        background-color: #3C7A89;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 10px;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-top: 2rem;
+    }
 
-.left {
-    display: column;
-    justify-content: left;
-    align-items: center;
-}
+    .right {
+        display: column;
+        text-align: center;
+    }
 
-.right {
-    display: column;
-    justify-content: right;
-    align-items: center;
-    width: 40%
+    h1 {
+        color: #373F51;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    h3 {
+        color: #373F51;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .colorText {
+        color: #373F51;
+        margin: 1rem;
+    }
+
+    .text {
+        margin: 2rem;
+        text-align: center;
+    }
+
+    .mobilView {
+        border-radius: 10px;
+        margin: 2rem;
+        background-color: white;
+    }
 }
