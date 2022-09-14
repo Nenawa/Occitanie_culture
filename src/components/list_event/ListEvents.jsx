@@ -13,36 +13,29 @@ export default function ListEvents() {
 
   let URL = `https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
 
+  function getUrl(){
+    fetch(URL)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.records);
+        },
+        (err) => {
+          setIsLoaded(true);
+          setError(err);
+        }
+      )
+}
+
   function increment(start) {
     setStart(start + 10);
-
-    fetch(URL)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result.records);
-        },
-        (err) => {
-          setIsLoaded(true);
-          setError(err);
-        }
-      )
+    getUrl();
   }
+
   function decrement(start) {
     (start === 10) ? setStart(start) : setStart(start - 10);
-    fetch(URL)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result.records);
-        },
-        (err) => {
-          setIsLoaded(true);
-          setError(err);
-        }
-      )
+    getUrl();
   }
 
   function handleClick(evnt) {
@@ -56,18 +49,7 @@ export default function ListEvents() {
   }
 
   useEffect(() => {
-    fetch(URL)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result.records);
-        },
-        (err) => {
-          setIsLoaded(true);
-          setError(err);
-        }
-      )
+    getUrl();
   }, [])
 
   if (error) {
