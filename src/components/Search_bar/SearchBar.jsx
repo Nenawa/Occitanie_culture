@@ -28,24 +28,28 @@ function SearchBar() {
             })
     }
 
-    console.log(data)
     function handleClickShowFilter() {
-        if (divMoreFilterRef.current.className.indexOf("showButton") === -1) {
+        if (!filterVisible) {
             setFilterVisible(true)
         } else {
             setFilterVisible(false)
         }
     }
 
-    const types = data?.facet_groups.filter(elm => elm.name === "type")[0].facets
-    const communes = data?.facet_groups.filter(elm => elm.name === "commune")[0].facets
+    let types 
+    let communes 
+
+    if (data && data.error === undefined) {
+        types = data.error === undefined && data?.facet_groups.filter(elm => elm.name === "type")[0].facets
+        communes = data.error === undefined && data?.facet_groups.filter(elm => elm.name === "commune")[0].facets
+    }
 
     return (
         <div className='searchBar'>
             <div>
                 <input onChange={handleChange} className='searchBar__input' ref={searchRef} type="text" placeholder="Rechercher ..."/>
             </div>
-            <div ref={divMoreFilterRef} className={filterVisible ? `searchBar__inputHide` : `searchBar__inputHide showButton`}>
+            <div ref={divMoreFilterRef} className={!filterVisible ? `searchBar__inputHide` : `showButton`}>
                 <select className='searchBar__input searchBar__select' onChange={handleChange} ref={communeRef}>
                     <option value="">Commune</option>
                     {communes?.map((elm) => <option key={elm.name} title={elm.name}>{elm.name.length > 20 ? `${elm.name.slice(0, 20)}...` : elm.name}</option>)}
