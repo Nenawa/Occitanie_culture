@@ -3,31 +3,17 @@ import './ListEvents.css'
 import EventSelected from "../event_selected/EventSelected";
 
 
-const URL = 'https://data.laregion.fr/api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&timezone=Europe%2FBerlin';
-
-
-
-
-
-
 export default function ListEvents() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState(null);
   const [item, setItem] = useState(null);
-  const [state, setState]= useState(true);
+  const [state, setState] = useState(true);
+  const [start, setStart] = useState(0);
 
+  let URL = `https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
 
-  function handleClick(evnt) {
-    setItem(evnt);
-    setState(!state);
-
-    console.log('evnt', evnt);
-    console.log('item', item);
-
-  }
-
-  useEffect(() => {
+  function getUrl(){
     fetch(URL)
       .then(res => res.json())
       .then(
@@ -40,6 +26,30 @@ export default function ListEvents() {
           setError(err);
         }
       )
+}
+
+  function increment(start) {
+    setStart(start + 10);
+    getUrl();
+  }
+
+  function decrement(start) {
+    (start === 10) ? setStart(start) : setStart(start - 10);
+    getUrl();
+  }
+
+  function handleClick(evnt) {
+    setItem(evnt);
+    setState(false);
+  }
+
+  function handleSlide(state) {
+    setState(!state);
+    setItem(null);
+  }
+
+  useEffect(() => {
+    getUrl();
   }, [])
 
   if (error) {
@@ -48,11 +58,13 @@ export default function ListEvents() {
     return <div>Chargement...</div>;
   } else {
     return (
-      <div className='evtSelected'>
+      <div className='listEvents'>
+
 
         <ul className={state ? 'listEvents__ul' : 'listEvents__ul--reduced'}>
+
           {items?.map(item => (
-            <li key={item.recordid} onClick={() => handleClick(item)} style={{ cursor: 'pointer' }} className='listEvents__li'>
+            <li key={item.recordid} onClick={() => handleClick(item)} className='listEvents__li'>
               <div className='listEvents__li--entete'>
                 <div>
                   <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
@@ -64,15 +76,20 @@ export default function ListEvents() {
               <p className={state ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.description).replace('&nbsp;', ' ')}</p>
             </li>
           ))}
-          {/* <button onClick={'affiche 10 résultats de plus'}> + </button> */}
+          <div>
+          </div>
+
+          <div className='listEvents__button'>
+            <button type='button' onClick={() => increment(start)}> suivants </button>
+            <button type='button' onClick={() => decrement(start)}> précédents </button>
+          </div>
         </ul>
+
+        <button className={state ? 'listEvents__ul--button' : 'ListEvents__slide--button'} onClick={() => handleSlide(state)} type='button'> ... </button>
 
         <div >
           {item ? <EventSelected item={item} /> : null}
-
         </div>
-
-
 
       </div>
     );
