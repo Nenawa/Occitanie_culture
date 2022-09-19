@@ -11,7 +11,9 @@ export default function ListEvents() {
   const [state, setState] = useState(true);
   const [start, setStart] = useState(0);
 
-  let URL = `https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
+  let URL = `https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
+// https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin
+
 
   function getUrl(){
     fetch(URL)
@@ -20,6 +22,8 @@ export default function ListEvents() {
         (result) => {
           setIsLoaded(true);
           setItems(result.records);
+         
+          console.log(result.records);
         },
         (err) => {
           setIsLoaded(true);
