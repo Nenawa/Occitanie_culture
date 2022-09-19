@@ -49,18 +49,21 @@
     height: 47px;
     padding: 10px;
     padding-bottom: 16px;
-    font-size: 45px;
+    font-size: 35px;
     line-height: 0px;
     right: 15px;
     color: #424242;
     position: absolute;
 }
-.searchBar>div{
+.searchBar>div:first-child{
+    display: flex;
     justify-content: center;
 }
 
 .showButton {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 @media (min-width: 800px) {
     .searchBar__ShowFilterButton {
@@ -93,7 +96,6 @@
     }
 
     .searchBar {
-
         justify-content: center;
     }
 
