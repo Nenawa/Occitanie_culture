@@ -1,3 +1,36 @@
+/*  FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,600;1,400&display=swap');
+@font-face {
+    font-family: 'Arimo', sans-serif;
+    src: url();
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400&display=swap');
+@font-face {
+    font-family: 'Istok Web', sans-serif;
+    src: url();
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,wght@0,200;0,400;0,600;1,400&display=swap');
+@font-face {
+    font-family: 'Nunito Sans', sans-serif;
+    src: url();
+}
+
+
+
+/** VARIABLES CSS **/
+:root{
+    --main-color: #3C7A89;
+    --sec-color:#16262e ;
+    --third-color:#dbc2cf;
+    --bg-color: #EDECEC;
+
+    
+
+}
+
+
 .listEvents__ul {
     max-width: 56.25rem;
     background-color: #3C7A89;
