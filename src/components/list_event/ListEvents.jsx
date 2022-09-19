@@ -12,17 +12,17 @@ export default function ListEvents() {
   const [start, setStart] = useState(0);
 
   let URL = `https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
-// https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin
+  // https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin
 
 
-  function getUrl(){
+  function getUrl() {
     fetch(URL)
       .then(res => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
           setItems(result.records);
-         
+
           console.log(result.records);
         },
         (err) => {
@@ -30,7 +30,7 @@ export default function ListEvents() {
           setError(err);
         }
       )
-}
+  }
 
   function increment(start) {
     setStart(start + 10);
@@ -71,13 +71,16 @@ export default function ListEvents() {
             <li key={item.recordid} onClick={() => handleClick(item)} className='listEvents__li'>
               <div className='listEvents__li--entete'>
                 <div>
-                  <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
+                  <p>{(item.fields.nom_de_la_manifestation)}</p>
                 </div>
-                <p>{item.fields.date}</p>
-                <p>{item.fields.commune}</p>
-
+                <div>
+                  <p>à partir du {new Date(item.fields.date_debut).toLocaleDateString()}</p>
+                  {/* <p>{item.fields.lieu_adresse_2}</p> */}
+                  <p>à {item.fields.commune}</p>
+                </div>
               </div>
-              <p className={state ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.description).replace('&nbsp;', ' ')}</p>
+              <p className={state ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.descriptif_court)} (...)</p>
+              {/*  .replace('&nbsp;', ' ')*/}
             </li>
           ))}
           <div>

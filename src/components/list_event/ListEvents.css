@@ -75,6 +75,10 @@
     padding-bottom: 0.5rem;
 }
 
+.listEvents__li--entete>div p:nth-child(2)
+{
+    font-weight: 600;
+}
 /* placement de l'evenement selectionné à droite de la liste des evts*/
 .listEvents {
     display: flex;
