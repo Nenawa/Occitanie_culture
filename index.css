@@ -1,0 +1,14 @@
+/** VARIABLES **/
+:root{
+    /* couleurs */
+    --main-color: #3C7A89;
+    --sec-color:#16262e ;
+    --third-color:#dbc2cf;
+    --bg-color: #EDECEC;
+    /* fonts */
+    --titreUn : 'Arimo', sans-serif;
+    --titreDeux : 'Istok Web', sans-serif;
+    --paragraphe : 'Nunito Sans', sans-serif;
+}
+
+
