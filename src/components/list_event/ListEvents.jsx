@@ -8,25 +8,29 @@ export default function ListEvents() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState(null);
   const [item, setItem] = useState(null);
-  const [state, setState] = useState(true);
+  const [viewState, setViewState] = useState(true);
   const [start, setStart] = useState(0);
 
-  let URL = `https://data.laregion.fr//api/records/1.0/search/?dataset=agendas-participatif-des-sorties-en-occitanie&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
+  let URL = `https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
 
-  function getUrl(){
+
+
+  function getUrl() {
     fetch(URL)
       .then(res => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
           setItems(result.records);
+
+          console.log(result.records);
         },
         (err) => {
           setIsLoaded(true);
           setError(err);
         }
       )
-}
+  }
 
   function increment(start) {
     setStart(start + 10);
@@ -40,11 +44,11 @@ export default function ListEvents() {
 
   function handleClick(evnt) {
     setItem(evnt);
-    setState(false);
+    setViewState(false);
   }
 
   function handleSlide(state) {
-    setState(!state);
+    setViewState(!viewState);
     setItem(null);
   }
 
@@ -61,31 +65,32 @@ export default function ListEvents() {
       <div className='listEvents'>
 
 
-        <ul className={state ? 'listEvents__ul' : 'listEvents__ul--reduced'}>
+        <ul className={viewState ? 'listEvents__ul' : 'listEvents__ul--reduced'}>
 
           {items?.map(item => (
             <li key={item.recordid} onClick={() => handleClick(item)} className='listEvents__li'>
               <div className='listEvents__li--entete'>
                 <div>
-                  <p>{(item.fields.titre).replace('&#8217;', "'")}</p>
+                  <p>{(item.fields.nom_de_la_manifestation)}</p>
                 </div>
-                <p>{item.fields.date}</p>
-                <p>{item.fields.commune}</p>
-
+                <div>
+                  <p>à partir du {new Date(item.fields.date_debut).toLocaleDateString()}</p>
+                  <p>à {item.fields.commune}</p>
+                </div>
               </div>
-              <p className={state ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.description).replace('&nbsp;', ' ')}</p>
+              <p className={viewState ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.descriptif_court)} (...)</p>
             </li>
           ))}
           <div>
           </div>
 
           <div className='listEvents__button'>
-            <button type='button' onClick={() => increment(start)}> suivants </button>
             <button type='button' onClick={() => decrement(start)}> précédents </button>
+            <button type='button' onClick={() => increment(start)}> suivants </button>
           </div>
         </ul>
 
-        <button className={state ? 'listEvents__ul--button' : 'ListEvents__slide--button'} onClick={() => handleSlide(state)} type='button'> ... </button>
+        <button className={viewState ? 'listEvents__ul--button' : 'ListEvents__slide--button'} onClick={() => handleSlide(viewState)} type='button'> ... </button>
 
         <div >
           {item ? <EventSelected item={item} /> : null}
