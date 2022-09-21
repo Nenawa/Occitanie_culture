@@ -11,7 +11,7 @@ export default function ListEvents() {
   const [viewState, setViewState] = useState(true);
   const [start, setStart] = useState(0);
 
-  let URL = `https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
+  const URL = `https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
 
 
 
@@ -23,7 +23,6 @@ export default function ListEvents() {
           setIsLoaded(true);
           setItems(result.records);
 
-          console.log(result.records);
         },
         (err) => {
           setIsLoaded(true);
