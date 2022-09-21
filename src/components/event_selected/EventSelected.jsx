@@ -13,7 +13,7 @@ function EventSelected(props) {
             <div className="rect">
                 <div className="mobilView">
                     <div className="title">
-                        <h1>{(item.fields.titre).replace('&#8217;', "'")}</h1>
+                        <h1>{(item.fields.nom_de_la_manifestation)}</h1>
                     </div>
                     <div className="right">
                         <h3>{item.fields.adresse}</h3>
@@ -23,7 +23,7 @@ function EventSelected(props) {
                         <h3>{item.fields.date_fin}</h3>
                     </div>
                     <div className="text">
-                        <p className="colorText">{(item.fields.description).replace('&nbsp;', ' ')}</p>
+                        <p className="colorText">{(item.fields.descriptif_long)}</p>
                     </div>
                 </div>
             </div>
