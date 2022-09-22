@@ -9,7 +9,6 @@ function SearchBar() {
   const typeRef = useRef(null);
   const dateRef = useRef(null);
 
-  // const [data, setData] = useState(null);s
   const [filterVisible, setFilterVisible] = useState(false);
 
   const { facets, setSearch, setCommune, setType, setDate } =
