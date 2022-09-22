@@ -13,7 +13,6 @@ import "./map.css";
 function ChangeView({ center, zoom }) {
   const map = useMap();
   map.setView(center, zoom);
-  return null;
 }
 
 const Map = (props) => {
