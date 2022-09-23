@@ -3,7 +3,7 @@
   background: #DBC2CF;
   box-shadow: 0px 5px 5px #424242;
   width: 100vw;
-
+  position: absolute;
 }
 
 .searchBar__input {
