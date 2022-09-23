@@ -60,9 +60,14 @@ export default function ListEvents() {
             <button type="button" onClick={() => decrement()}>
               précédents
             </button>
-            <button type="button" onClick={() => increment()}>
-              suivants
-            </button>
+            {
+              items.length === 4 
+              ? <button type="button" onClick={() => increment()}>
+                  suivants
+                </button>
+              : null
+            }
+            
           </div>
         </ul>
 
