@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
     "react-leaflet": "^4.0.2",
+    "react-loader-spinner": "^5.3.4",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0"
   },
