@@ -22,6 +22,7 @@
 }
 
 .listEvents__li {
+    
     border: .125rem solid grey;
     border-radius: 2rem;
     background-color: white;
@@ -57,7 +58,7 @@
 /* placement de l'evenement selectionné à droite de la liste des evts*/
 .listEvents {
     display: flex;
-    height: 90vh;
+    height: 95vh;
 }
 
 .listEvents__button {
