@@ -1,10 +1,10 @@
 .listEvents__ul {
     max-width: 56.25rem;
     background-color: var(--main-color);
-    margin: 1rem .5rem 0 .5rem;
+    margin: 1rem .5rem;
     padding-bottom: 1rem;
     padding-left: 0;
-    border-radius: 2rem;
+    border-radius: .5rem;
 }
 
 .listEvents__ul--p {
@@ -57,6 +57,7 @@
 /* placement de l'evenement selectionné à droite de la liste des evts*/
 .listEvents {
     display: flex;
+    height: 90vh;
 }
 
 .listEvents__button {
