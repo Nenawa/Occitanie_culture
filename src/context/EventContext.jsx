@@ -13,22 +13,22 @@ export function EventContextProvider(props) {
   const [date, setDate] = useState(null);
   const [facets, setFacets] = useState(null);
 
-  const indexIcrement = 4;
+  const indexIncrement = 4;
 
   function increment() {
-    setStart(start + indexIcrement);
+    setStart(start + indexIncrement);
   }
 
   function decrement() {
     if (start > 0) {
-      setStart(start - indexIcrement);
+      setStart(start - indexIncrement);
     }
   }
 
   const fetchApi = () => {
     const URL = `https://data.toulouse-metropole.fr/api/records/1.0/search/?start=${start}&dataset=agenda-des-manifestations-culturelles-so-toulouse${
       search ? `&q=${search}` : ""
-    }&rows=${indexIcrement}&facet=date_debut&facet=date_fin&facet=categorie_de_la_manifestation&facet=theme_de_la_manifestation&facet=commune${
+    }&rows=${indexIncrement}&facet=date_debut&facet=date_fin&facet=categorie_de_la_manifestation&facet=theme_de_la_manifestation&facet=commune${
       commune ? `&refine.commune=${commune.replaceAll(" ", "%20")}` : ""
     }${
       type
