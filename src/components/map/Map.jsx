@@ -41,7 +41,7 @@ function Map(props) {
           <Marker position={[props.coordinates[1], props.coordinates[0]]}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
-              <a onClick={fullScreen}>click hear</a>
+              <a onClick={fullScreen}>click ici</a>
             </Popup>
           </Marker>
         </MapContainer>
