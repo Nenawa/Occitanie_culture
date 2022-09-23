@@ -14,7 +14,7 @@ function EventSelected(props) {
             <h1>{item.fields.nom_de_la_manifestation}</h1>
           </div>
           <div className="right">
-            <h3>{item.fields.adresse}</h3>
+            <h3>{item.fields.lieu_adresse_2}</h3>
             <hr />
             <h3>{item.fields.date_debut}</h3>
             <hr />
