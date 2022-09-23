@@ -26,8 +26,15 @@ function fullScreen() {
 function Map(props) {
   return (
     <div className="map__container">
-      <MapContainer center={[props.coordinates[1], props.coordinates[0]]} zoom={20} scrollWheelZoom={true}>
-        <ChangeView center={[props.coordinates[1], props.coordinates[0]]} zoom={20} />
+      <MapContainer
+        center={[props.coordinates[1], props.coordinates[0]]}
+        zoom={20}
+        scrollWheelZoom={true}
+      >
+        <ChangeView
+          center={[props.coordinates[1], props.coordinates[0]]}
+          zoom={20}
+        />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -36,7 +43,7 @@ function Map(props) {
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
             <a onClick={fullScreen} href="#">
-              click hear
+              click here
             </a>
           </Popup>
         </Marker>
