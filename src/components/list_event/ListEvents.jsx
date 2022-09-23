@@ -50,9 +50,9 @@ export default function ListEvents() {
                   viewState ? "listEvents__ul--p" : "listEvents__ul--display"
                 }
               >
-                 {item.fields.descriptif_court.length > 350
-                ? `${item.fields.descriptif_court.slice(0, 180)}...`
-                : item.fields.descriptif_court} (...)
+                 {item.fields.descriptif_court.length > 150
+                ? `${item.fields.descriptif_court.slice(0, 150)}...`
+                : item.fields.descriptif_court} 
               </p>
             </li>
           ))}
