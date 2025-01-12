@@ -8,7 +8,7 @@ export default function ListEvents() {
   const [itemSelected, setItemSelected] = useState(null);
   const [viewState, setViewState] = useState(true);
 
-  const { items, increment, decrement } = useContext(EventContext);
+  const { items, increment, decrement, start } = useContext(EventContext);
 
   function handleClick(evnt) {
     setItemSelected(evnt);
@@ -71,24 +71,30 @@ export default function ListEvents() {
                   viewState ? "listEvents__ul--p" : "listEvents__ul--display"
                 }
               >
-                {item.fields.descriptif_court} (...)
+                 {item.fields.descriptif_court.length > 150
+                ? `${item.fields.descriptif_court.slice(0, 150)}...`
+                : item.fields.descriptif_court} 
               </p>
             </li>
           ))}
           <div />
 
           <div className="listEvents__button">
-            <button type="button" onClick={() => decrement()}>
+            {
+              start === 0
+            ? null 
+            : <button type="button" onClick={() => decrement()}>
               précédents
             </button>
+            }
             {
-              items.length === 4 
-              ? <button type="button" onClick={() => increment()}>
+              items.length === 4
+                ? <button type="button" onClick={() => increment()}>
                   suivants
                 </button>
-              : null
+                : null
             }
-            
+
           </div>
         </ul>
 
@@ -96,7 +102,7 @@ export default function ListEvents() {
           className={
             viewState ? "listEvents__ul--button" : "ListEvents__slide--button"
           }
-          onClick={() => handleSlide(viewState)}
+          onClick={() => handleSlide()}
           type="button"
         >
           ...
