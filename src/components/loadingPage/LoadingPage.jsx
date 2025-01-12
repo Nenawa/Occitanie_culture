@@ -1,7 +1,7 @@
 import React from "react";
 
-import Logo from "../../assets/img/windows.png";
 import { InfinitySpin } from "react-loader-spinner";
+import Logo from "../../assets/img/windows.png";
 
 import "./loadingPage.css";
 

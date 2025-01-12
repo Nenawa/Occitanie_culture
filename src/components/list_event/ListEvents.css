@@ -93,11 +93,13 @@
         padding: .625rem;
         min-width: 13rem;
         max-width: 13rem;
-        margin: 2rem 0 0 1rem;
+        margin: 2rem ;
         display: block;
         border-radius: .2rem;
-        height: 98vh;
+        height: 80%;
         overflow: scroll;
+        margin-top: 110px;
+        margin-right: 0;
     }
 
     .listEvents__ul--button {
