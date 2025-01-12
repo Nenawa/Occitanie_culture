@@ -1,15 +1,12 @@
-
-import Toolbar from "../components/toolbar/Toolbar";
 import ListEvents from "../components/list_event/ListEvents";
 import SearchBar from "../components/Search_bar/SearchBar";
 
+import { EventContextProvider } from "../context/EventContext";
 
 export default function Home() {
   return (
-
-    <>
+    <EventContextProvider>
       <header>
-        <Toolbar />
         <SearchBar />
       </header>
 
@@ -17,10 +14,7 @@ export default function Home() {
         <section>
           <ListEvents />
         </section>
-
-      
       </main>
-    </>
-
+    </EventContextProvider>
   );
 }

@@ -1,103 +1,109 @@
-import React, { useState, useEffect } from 'react'
-import './ListEvents.css'
+import React, { useState, useContext } from "react";
+import "./ListEvents.css";
+import "./loader.css";
 import EventSelected from "../event_selected/EventSelected";
-
+import EventContext from "../../context/EventContext";
 
 export default function ListEvents() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState(null);
-  const [item, setItem] = useState(null);
+  const [itemSelected, setItemSelected] = useState(null);
   const [viewState, setViewState] = useState(true);
-  const [start, setStart] = useState(0);
 
-  const URL = `https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=10&start=${start}&timezone=europe%2FBerlin`;
-
-
-
-  function getUrl() {
-    fetch(URL)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result.records);
-
-        },
-        (err) => {
-          setIsLoaded(true);
-          setError(err);
-        }
-      )
-  }
-
-  function increment(start) {
-    setStart(start + 10);
-    getUrl();
-  }
-
-  function decrement(start) {
-    (start === 10) ? setStart(start) : setStart(start - 10);
-    getUrl();
-  }
+  const { items, increment, decrement } = useContext(EventContext);
 
   function handleClick(evnt) {
-    setItem(evnt);
+    setItemSelected(evnt);
     setViewState(false);
   }
 
-  function handleSlide(state) {
+  function handleSlide() {
     setViewState(!viewState);
-    setItem(null);
+    setItemSelected(null);
   }
-
-  useEffect(() => {
-    getUrl();
-  }, [])
-
-  if (error) {
-    return <div>Erreur : {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Chargement...</div>;
-  } else {
+  if (!items) {
     return (
-      <div className='listEvents'>
-
-
-        <ul className={viewState ? 'listEvents__ul' : 'listEvents__ul--reduced'}>
-
-          {items?.map(item => (
-            <li key={item.recordid} onClick={() => handleClick(item)} className='listEvents__li'>
-              <div className='listEvents__li--entete'>
+      <div className="container">
+        <h1 className="load__title">
+          Loading
+          <div className="dots">
+            <span className="dot z"></span>
+            <span className="dot f"></span>
+            <span className="dot s"></span>
+            <span className="dot t">
+              <span className="dot l"></span>
+            </span>
+          </div>
+        </h1>
+        <a className="abs-twitter" href="https://twitter.com/AbubakerSaeed96" rel="nofollow noreferrer" target="_blank">
+          <svg className="twitter-icon" viewBox="0 0 32 32" height="28px">
+            <path fill="#1da1f2" d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z">
+            </path>
+          </svg>
+        </a>
+      </div>
+    );
+  }
+  if (items) {
+    return (
+      <div className="listEvents">
+        <ul
+          className={viewState ? "listEvents__ul" : "listEvents__ul--reduced"}
+        >
+          {items?.map((item) => (
+            <li
+              key={item.recordid}
+              onClick={() => handleClick(item)}
+              className="listEvents__li"
+            >
+              <div className="listEvents__li--entete">
                 <div>
-                  <p>{(item.fields.nom_de_la_manifestation)}</p>
+                  <p>{item.fields.nom_de_la_manifestation}</p>
                 </div>
                 <div>
-                  <p>à partir du {new Date(item.fields.date_debut).toLocaleDateString()}</p>
+                  <p>
+                    à partir du{" "}
+                    {new Date(item.fields.date_debut).toLocaleDateString()}
+                  </p>
                   <p>à {item.fields.commune}</p>
                 </div>
               </div>
-              <p className={viewState ? 'listEvents__ul--p' : 'listEvents__ul--display'}>{(item.fields.descriptif_court)} (...)</p>
+              <p
+                className={
+                  viewState ? "listEvents__ul--p" : "listEvents__ul--display"
+                }
+              >
+                {item.fields.descriptif_court} (...)
+              </p>
             </li>
           ))}
-          <div>
-          </div>
+          <div />
 
-          <div className='listEvents__button'>
-            <button type='button' onClick={() => decrement(start)}> précédents </button>
-            <button type='button' onClick={() => increment(start)}> suivants </button>
+          <div className="listEvents__button">
+            <button type="button" onClick={() => decrement()}>
+              précédents
+            </button>
+            {
+              items.length === 4 
+              ? <button type="button" onClick={() => increment()}>
+                  suivants
+                </button>
+              : null
+            }
+            
           </div>
         </ul>
 
-        <button className={viewState ? 'listEvents__ul--button' : 'ListEvents__slide--button'} onClick={() => handleSlide(viewState)} type='button'> ... </button>
+        <button
+          className={
+            viewState ? "listEvents__ul--button" : "ListEvents__slide--button"
+          }
+          onClick={() => handleSlide(viewState)}
+          type="button"
+        >
+          ...
+        </button>
 
-        <div >
-          {item ? <EventSelected item={item} /> : null}
-        </div>
-
+        <div>{itemSelected ? <EventSelected item={itemSelected} /> : null}</div>
       </div>
     );
   }
 }
-
-

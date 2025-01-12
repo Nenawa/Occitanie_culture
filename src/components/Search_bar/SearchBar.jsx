@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "./SearchBar.css";
+import EventContext from "../../context/EventContext";
 
 function SearchBar() {
   const divMoreFilterRef = useRef(null);
@@ -8,41 +9,16 @@ function SearchBar() {
   const typeRef = useRef(null);
   const dateRef = useRef(null);
 
-  const [data, setData] = useState(null);
   const [filterVisible, setFilterVisible] = useState(false);
 
-  useEffect(() => {
-    fetch(
-      "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=test&rows=0&facet=date_debut&facet=date_fin&facet=categorie_de_la_manifestation&facet=theme_de_la_manifestation&facet=commune"
-    )
-      .then((rep) => rep.json())
-      .then((rep) => {
-        if (rep) setData(rep.facet_groups);
-      });
-  }, []);
+  const { facets, setSearch, setCommune, setType, setDate } =
+    useContext(EventContext);
 
   const handleChange = () => {
-    const link = `https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse${
-      searchRef.current.value ? `&q=${searchRef.current.value}` : ""
-    }&rows=10&facet=date_debut&facet=date_fin&facet=categorie_de_la_manifestation&facet=theme_de_la_manifestation&facet=commune${
-      communeRef.current.value
-        ? `&refine.commune=${communeRef.current.value.replaceAll(" ", "%20")}`
-        : ""
-    }${
-      typeRef.current.value
-        ? `&refine.theme_de_la_manifestation=${typeRef.current.value.replaceAll(
-            " ",
-            "%20"
-          )}`
-        : ""
-    }${
-      dateRef.current.value ? `&refine.start_date=${dateRef.current.value}` : ""
-    }`;
-    fetch(link)
-      .then((rep) => rep.json())
-      .then((rep) => {
-        console.log(rep);
-      });
+    setSearch(searchRef.current.value);
+    setCommune(communeRef.current.value);
+    setType(typeRef.current.value);
+    setDate(dateRef.current.value);
   };
 
   function handleClickShowFilter() {
@@ -57,11 +33,11 @@ function SearchBar() {
   let communes;
   let date;
 
-  if (data && data.error === undefined) {
-    types = data.filter((elm) => elm.name === "theme_de_la_manifestation")[0]
-      .facets;
-    communes = data.filter((item) => item.name === "commune")[0].facets;
-    date = data.filter((item) => item.name === "date_debut")[0].facets;
+  if (facets && facets.error === undefined) {
+    types = facets.filter((elm) => elm.name === "theme_de_la_manifestation")[0]
+      ?.facets;
+    communes = facets.filter((item) => item.name === "commune")[0]?.facets;
+    date = facets.filter((item) => item.name === "date_debut")[0]?.facets;
   }
 
   return (

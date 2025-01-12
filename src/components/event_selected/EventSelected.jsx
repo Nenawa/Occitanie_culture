@@ -1,38 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 
-import './style.css';
+import "./style.css";
 
 import Map from "../map/Map";
 
-
 function EventSelected(props) {
-    const item = props.item
-    const [state, setState] = useState(null);
-    return (
-        <>
-            <div className="rect">
-                <div className="mobilView">
-                    <div className="title">
-                        <h1>{(item.fields.nom_de_la_manifestation)}</h1>
-                    </div>
-                    <div className="right">
-                        <h3>{item.fields.adresse}</h3>
-                        <hr />
-                        <h3>{item.fields.date_debut}</h3>
-                        <hr />
-                        <h3>{item.fields.date_fin}</h3>
-                    </div>
-                    <div className="text">
-                        <p className="colorText">{(item.fields.descriptif_long)}</p>
-                    </div>
-                </div>
-            </div>
+  const item = props.item;
+  return (
+    <>
+      <div className="rect">
+        <div className="mobilView">
+          <div className="title">
+            <h1>{item.fields.nom_de_la_manifestation}</h1>
+          </div>
+          <div className="right">
+            <h3>{item.fields.adresse}</h3>
+            <hr />
+            <h3>{item.fields.date_debut}</h3>
+            <hr />
+            <h3>{item.fields.date_fin}</h3>
+          </div>
+          <div className="text">
+            <p className="colorText">{item.fields.descriptif_long}</p>
+          </div>
+        </div>
+      </div>
 
-            <div>
-                <Map coordinates={props.item.geometry.coordinates} />
-            </div>
-        </>
-    );
+      <div>
+        <Map coordinates={props.item.geometry.coordinates} />
+      </div>
+    </>
+  );
 }
 
 export default EventSelected;
