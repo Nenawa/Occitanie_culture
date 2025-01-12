@@ -21,10 +21,50 @@
     padding: 1rem;
 }
 
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin: 2rem;
+}
+
+.logo_img {
+    width: 50%;
+    opacity: 0.9;
+}
+
 .title__group {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.alert__group {
+    display: flex;
+
+    margin: 2rem 0;
+}
+.alert__span {
+    width: 100%;
+    background-color: #DBC2CF;
+    color: red;
+    text-align: center;
+
+    padding: 1rem 0;
+}
+
+.error__group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.error__span {
+    color: red;
+    font-size: 0.7rem;
 }
 
 .title__group h1 {
@@ -42,19 +82,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 1rem 0;
-}
-
-.span__group {
-    width: 100%;
-    display: flex;
-    align-content: flex-start;
-    justify-content: flex-start;
-}
-
-.alert__span {
-    color: red;
-    padding: 0.5rem 0 0 0;
+    padding: 0.5rem 0;
 }
 
 .form__imput {
@@ -72,7 +100,7 @@
 }
 
 .submit__button {
-    width: 100%;
+    width: 70%;
     padding: 0.5rem 0;
     border-radius: 10px;
     background-color: #DBC2CF;
